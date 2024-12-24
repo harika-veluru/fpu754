@@ -28,8 +28,8 @@ module a_times_one_minus_a_tb;
             // Assign the current result as the new value of a
             a = result1;
             
-            // Display the [22:6] bits of result1
-          $display("Bits [22:6] of result1: %b", result1[22:6]);
+            // Display the [22:14] bits of result1
+          $display("Bits [22:14] of result1: %b", result1[22:14]);
         end
         
         // Display the final result
