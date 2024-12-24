@@ -1,0 +1,50 @@
+module a_times_one_minus_a_tb;
+
+    reg [31:0] a;
+    wire [31:0] result1;
+
+    // Instantiate the module under test
+    a_times_one_minus_a uut (
+        .a(a),
+        .result1(result1)
+    );
+
+    // Initialize a to some value
+    initial begin
+        // Initial value of a
+        a = 32'b00111110101100110011001100110011; // 0.35
+        
+        // Apply some delay for proper dumping
+        #10;
+        
+        // Run simulation for 2 iterations
+      for (int i = 0; i < 43; i = i + 1) begin
+            // Display the current value of a
+            $display("Iteration %d: a = %h", i, a);
+            
+            // Finish simulation after some time
+            #100;
+            
+            // Assign the current result as the new value of a
+            a = result1;
+            
+            // Display the [22:6] bits of result1
+          $display("Bits [22:6] of result1: %b", result1[22:6]);
+        end
+        
+        // Display the final result
+      $display("Final result after 2 iterations: %b", result1);
+        
+        // Finish simulation
+        $finish;
+    end
+
+    // Dump simulation results
+    initial begin
+        $dumpfile("a_times_one_minus_a_simulation.vcd");
+        $dumpvars(0, a_times_one_minus_a_tb);
+        // Run simulation
+        #1;
+    end
+
+endmodule
