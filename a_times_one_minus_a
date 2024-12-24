@@ -19,7 +19,7 @@ module a_times_one_minus_a(
     );
    floating_point_multiplier multiplication1 (
      .float_a(result),
-     .float_b(32'b01000000011001100110011001100110),
+     .float_b(32'b01000000011100110011001100110011),
      .result(result1)
     );
   
