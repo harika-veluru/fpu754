@@ -1,0 +1,27 @@
+module a_times_one_minus_a(
+    input [31:0] a,
+  output [31:0] result1
+);
+  reg [31:0]result;
+    reg [31:0] one_minus_a;
+  reg [15:0]final_value;
+
+    floating_point_subtraction subtraction (
+      .a(32'b00111111100000000000000000000000), // 1.0
+        .b(a),
+        .result(one_minus_a)
+    );
+
+    floating_point_multiplier multiplication (
+        .float_a(a),
+        .float_b(one_minus_a),
+        .result(result)
+    );
+   floating_point_multiplier multiplication1 (
+     .float_a(result),
+     .float_b(32'b01000000011001100110011001100110),
+     .result(result1)
+    );
+  
+
+endmodule
